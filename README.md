@@ -65,33 +65,6 @@ Dry-run mode is enabled by default. The node should report the loaded waypoints 
 python3 -m unittest discover -s tests -v
 ```
 
-The tests cover valid configurations, duplicate joint names, incorrect waypoint dimensions, non-finite waypoint values, and non-positive trajectory duration.
-
-## Limitations and Safety
-
-- The example waypoint values are illustrative and have not been verified against the robot's joint limits or workspace.
-- The current validation checks configuration consistency; it does not perform collision checking, inverse kinematics, or trajectory feasibility analysis.
-- The node does not wait for controller feedback or confirm that a robot reached a target.
-- In publishing mode, each waypoint is sent as a separate single-point trajectory message. This is a demonstration, not a complete trajectory execution system.
-- Do not enable publishing on a physical robot without first verifying the robot model, joint order, controller configuration, joint limits, and safety procedures.
-
-## Potential Applications
-
-The concepts demonstrated here can support further development of:
-
-- ROS 2 robot motion pipelines
-- Joint-space trajectory configuration tools
-- Automated configuration validation
-- Simulation-based robotics testing
-- Industrial robot waypoint workflows
-
-## Future Improvements
-
-- Use the `FollowJointTrajectory` action and monitor execution results.
-- Support complete multi-point trajectories with increasing timestamps.
-- Validate joint limits against a robot model.
-- Add simulation integration and trajectory visualisation.
-- Add continuous integration to run tests automatically.
 
 ## License
 
