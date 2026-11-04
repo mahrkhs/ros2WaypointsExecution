@@ -35,7 +35,6 @@ ros2WaypointsExecution/
 │   └── waypoint_executor.py
 ├── tests/
 │   └── test_waypoint_executor.py
-├── examples/
 ├── .gitignore
 ├── LICENSE
 └── README.md
