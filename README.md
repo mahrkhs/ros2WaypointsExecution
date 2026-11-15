@@ -1,71 +1,66 @@
-# ROS 2 Joint-Space Waypoint Validation and Demonstration
+# Franka Panda – ROS 2 Waypoint Execution
 
-A project demonstrating how to load, validate, and process joint-space waypoints for a robot using ROS 2 and Python.
+A Python-based ROS 2 project for configuring, validating and processing joint-space waypoints for a Franka Panda robotic arm.
 
-## Project Overview
+The project combines waypoint validation, ROS 2 trajectory messages and a Panda robot description prepared for Gazebo simulation.
 
-Robotic applications often require a sequence of joint configurations to describe a robot's intended motion. Before sending trajectory messages to a controller, the configuration should be checked for basic errors.
+## Features
 
-This project loads waypoint data from a YAML configuration file, validates its structure and numeric values, and demonstrates the processing of each waypoint. It defaults to **dry-run mode**, so it does not publish trajectory commands to a robot.
-
-## Key Features
-
-- Load joint names and waypoint configurations from YAML.
-- Validate joint names, waypoint dimensions, numeric values, and trajectory duration.
-- Create ROS 2 `JointTrajectory` messages.
-- Demonstrate waypoint processing in dry-run mode.
-- Support optional message publishing when explicitly enabled.
-- Include automated unit tests for configuration validation.
+- Load robot joint configurations from YAML files.
+- Validate joint names, waypoint dimensions and numeric values.
+- Generate ROS 2 `JointTrajectory` messages.
+- Test waypoint processing in dry-run mode.
+- Integrate the Franka Panda URDF model.
+- Configure Gazebo and ROS 2 controllers.
 
 ## How It Works
 
-1. **Configuration:** Read joint names, waypoint positions, and trajectory duration from `config/waypoints.yaml`.
-2. **Validation:** Check that joint names are unique, each waypoint has the correct number of values, and all positions and durations are valid finite numbers.
-3. **Message construction:** Build a ROS 2 `JointTrajectory` message for the current waypoint.
-4. **Dry-run demonstration:** Log each waypoint without publishing commands.
-5. **Optional publishing:** When dry-run is disabled, publish waypoint messages to the configured topic.
+1. Load joint names and waypoints from a YAML file.
+2. Validate the configuration.
+3. Generate ROS 2 trajectory messages.
+4. Process waypoints in dry-run mode without moving a robot.
+
 
 ## Project Structure
 
 ```text
 ros2WaypointsExecution/
 ├── config/
-│   └── waypoints.yaml
-├── src/
-│   └── waypoint_executor.py
+├── gazebo_panda/
+├── launch/
+├── resource/
 ├── tests/
-│   └── test_waypoint_executor.py
-├── .gitignore
-├── LICENSE
+├── urdf/
+├── package.xml
+├── setup.py
 └── README.md
 ```
 
-## Requirements
+## Installation
 
-- Python 3
-- ROS 2 with the Python client library (`rclpy`)
-- ROS 2 message packages providing `builtin_interfaces` and `trajectory_msgs`
-- PyYAML
-
-The ROS 2 environment must be sourced before running the node.
-
-## Run the Demonstration
-
-From the project root, with your ROS 2 environment sourced:
+Build the ROS 2 package:
 
 ```bash
-python3 src/waypoint_executor.py
+colcon build --symlink-install
+source install/setup.bash
 ```
 
-Dry-run mode is enabled by default. The node should report the loaded waypoints and finish without publishing trajectory messages.
+## Run the Waypoint Executor
 
-## Run the Tests
+```bash
+ros2 run gazebo_panda waypoint_executor
+```
+
+Dry-run mode is enabled by default.
+
+## Run Tests
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
+**Current status:** Package build successful, five unit tests passed, and Panda URDF successfully validated. Gazebo spawning and joint movement have not yet been verified.
 
 ## License
 
-See the `LICENSE` file.
+MIT License.
