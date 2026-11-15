@@ -12,16 +12,17 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    package_name = "robotic_arms_control"
+    package_name = "gazebo_panda"
+
     package_share = get_package_share_directory(package_name)
 
     xacro_file = os.path.join(
-        package_share, "urdf", "panda_gazebo.urdf.xacro"
-    )
-    controller_config = os.path.join(
-        package_share, "config", "panda_jtc_controller.yaml"
+        package_share, "urdf", "panda.urdf.xacro"
     )
 
+    controller_config = os.path.join(
+        package_share, "config", "panda_controllers.yaml"
+    )
     # Makes the Panda meshes supplied by franka_description discoverable.
     franka_share_root = os.path.join(
         get_package_prefix("franka_description"), "share"

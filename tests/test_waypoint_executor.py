@@ -8,7 +8,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 import yaml
 
-from src.waypoint_executor import WaypointExecutor
+from gazebo_panda.waypoint_executor import WaypointExecutor
 
 
 class TestWaypointValidation(unittest.TestCase):
