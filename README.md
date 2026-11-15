@@ -59,8 +59,3 @@ Dry-run mode is enabled by default.
 python3 -m unittest discover -s tests -v
 ```
 
-**Current status:** Package build successful, five unit tests passed, and Panda URDF successfully validated. Gazebo spawning and joint movement have not yet been verified.
-
-## License
-
-MIT License.
