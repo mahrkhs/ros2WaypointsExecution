@@ -1,3 +1,4 @@
+
 import os
 from glob import glob
 
@@ -15,8 +16,16 @@ setup(
         ("share/" + package_name, ["package.xml"]),
         (os.path.join("share", package_name, "launch"), glob("launch/*.launch.py")),
         (os.path.join("share", package_name, "config"), glob("config/*.yaml")),
-        (os.path.join("share", package_name, "urdf"), glob("urdf/*.xacro")),
+        (
+            os.path.join("share", package_name, "config", "robot_description"),
+            glob("config/robot_description/*.yaml"),
+        ),
+        (
+            os.path.join("share", package_name, "urdf"),
+            glob("urdf/*"),
+        ),
     ],
+
     install_requires=["setuptools", "PyYAML"],
     zip_safe=True,
     maintainer="Mahrukh",

@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
 
   <!-- Use the Panda robot model provided by MoveIt resources -->
-  <xacro:include filename="$(find moveit_resources_panda_description)/urdf/panda.urdf"/>
+  <xacro:include filename="$(find gazebo_panda)/urdf/panda_with_inertials.urdf"/>
 
   <!-- Gazebo Classic ros2_control interfaces -->
   <ros2_control name="GazeboSystem" type="system">
